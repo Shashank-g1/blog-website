@@ -2,7 +2,7 @@
 import { FETCHING_BLOG_LIST, FETCHING_BLOG_LIST_SUCCESS } from "./actionTypes";
 
 const initialState = {
-  blogList: {},
+  blogList: [],
   isFetchingBlogList: false,
 };
 
