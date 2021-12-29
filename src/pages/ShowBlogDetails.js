@@ -8,7 +8,6 @@ function ShowBlogDetails() {
   return (
     <div className={styles.container}>
       <h3>Hello user {id.id}</h3>
-      <p> </p>
     </div>
   );
 }
