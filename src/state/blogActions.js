@@ -14,8 +14,6 @@ export const displayedBlogList = () => {
         "https://jsonplaceholder.typicode.com/posts"
       );
 
-      console.log(data);
-
       batch(() => {
         dispatch({ type: FETCHING_BLOG_LIST_SUCCESS, payload: data });
         dispatch(displayingBlogList(false));
