@@ -16,31 +16,34 @@ function HomePage(props) {
       <div>
         <NavBar />
       </div>
-      <div className={styles.container}>
-        {blogList.map((a) => (
-          <>
-            <table>
-              <tr>
-                <td>
-                  <h5>Blog</h5>
-                  {a.id}
-                </td>
-                <br />
-              </tr>
-              <tr>
-                <td className={styles.container__tableDescription}>
-                  <h5>Title </h5>
-                  {a.title}
-                </td>
-                <br />
-              </tr>
-              <br />
-              <Link to={`/ShowBlogDetails/${a.id}`}>Open this blog</Link>
-              <br />
-              <hr className={styles.contentDivider} />
-            </table>
-          </>
-        ))}
+      <div className={styles.blog}>
+        <div className={styles["blog-header-container"]}>
+          <div className={`${styles["blog-part"]} ${styles["right-blog"]}`}>
+            <div className={styles["blog-right-title-container"]}>
+              <div className={styles["blog-right-title"]}>
+                Featured Articles
+              </div>
+            </div>
+            {blogList.map((a) => (
+              <>
+                <div className={styles["blog-right"]}>
+                  <div className={styles["blog-right-container"]}>
+                    <div className={styles["blog-title-date"]}>
+                      <div className={styles["blog-right-page"]}>
+                        {a.id} <span className={styles.title}> {a.title}</span>
+                        <span className={styles.blogLink}>
+                          <Link to={`/ShowBlogDetails/${a.id}`}>
+                            Open this blog
+                          </Link>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
