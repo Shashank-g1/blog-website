@@ -2,14 +2,13 @@ import NavBar from "../Components/NavBar";
 import React, { useEffect } from "react";
 import styles from "./HomePage.module.less";
 import { Link } from "react-router-dom";
+
 function HomePage(props) {
   const { displayedBlogList, blogList } = props;
 
   useEffect(() => {
     displayedBlogList();
   }, [displayedBlogList]);
-
-  console.log(blogList);
 
   return (
     <>

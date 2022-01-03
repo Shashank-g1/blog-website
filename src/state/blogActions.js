@@ -1,4 +1,8 @@
-import { FETCHING_BLOG_LIST, FETCHING_BLOG_LIST_SUCCESS } from "./actionTypes";
+import {
+  FETCHING_BLOG_LIST,
+  FETCHING_BLOG_LIST_SUCCESS,
+  GET_BLOG_DATA ,
+} from "./actionTypes";
 import { batch } from "react-redux";
 import axios from "axios";
 
@@ -24,4 +28,8 @@ export const displayedBlogList = () => {
       });
     }
   };
+};
+
+export const gettingBlogData = (data) => {
+  return { type: GET_BLOG_DATA , payload: data };
 };
