@@ -1,5 +1,4 @@
-import HomePage from "./pages";
-import NavBar from "./Components/NavBar";
+import HomePage from "./pages/HomePage";
 import { Provider } from "react-redux";
 import store from "./store";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -8,7 +7,6 @@ import ShowBlogDetails from "./pages/ShowBlogDetails";
 function App() {
   return (
     <>
-      {/* <NavBar /> */}
       <Router>
         <Provider store={store}>
           <Routes>

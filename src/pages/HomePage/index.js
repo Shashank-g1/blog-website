@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import HomePage from "./HomePage";
-import { displayedBlogList } from "../state/blogActions";
+import { fetchBlogList } from "../../state/blogActions";
 
 const mapStateToProps = (state) => {
   const {
@@ -9,4 +9,4 @@ const mapStateToProps = (state) => {
   return { isFetchingBlogList, blogList };
 };
 
-export default connect(mapStateToProps, { displayedBlogList })(HomePage);
+export default connect(mapStateToProps, { fetchBlogList })(HomePage);

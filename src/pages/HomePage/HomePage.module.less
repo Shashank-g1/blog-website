@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+@title-font: "Space Grotesk", sans-serif;
+@italic-font: "Playfair Display", serif;
+@blog-bg: #e9e6e4;
+
+.blog {
+  background-color: @blog-bg;
+  width: 100%;
+  padding: 2.5rem 0.25rem;
+
+  &__header {
+    font-size: 25px;
+    font-family: @italic-font;
+  }
+
+  &__description {
+    &__left {
+      font-size: 56px;
+      font-family: @title-font;
+      display: flex;
+      padding: 1rem 1rem 0;
+      margin-top: 3.2rem;
+    }
+
+    &__mid {
+      font-size: 24px;
+      width: 44%;
+      margin: -4.75rem 16rem 0px 15rem;
+      font-family: @title-font;
+    }
+    &__right {
+      margin: -2rem 1.5rem 0 75rem;
+      font-size: 20px;
+      font-family: @title-font;
+    }
+  }
+}
