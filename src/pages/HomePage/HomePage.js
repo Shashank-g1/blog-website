@@ -5,31 +5,29 @@ import { Link } from "react-router-dom";
 import Loader from "../../Common-Components/Loader/Loader";
 
 function HomePage(props) {
-  const { fetchingBlogList, blogList, isFetchingBlogList } = props;
+  const { fetchBlogList, blogList, isFetchingBlogList } = props;
 
   useEffect(() => {
-    fetchingBlogList();
-  }, [fetchingBlogList]);
+    fetchBlogList();
+  }, [fetchBlogList]);
 
   return (
     <>
       <NavBar />
 
-      {isFetchingBlogList === true ? (
+      {isFetchingBlogList ? (
         <Loader />
       ) : (
         <div className={styles.blog}>
           <div className={styles.blog__header}>Featured Articles</div>
           <hr />
           <div className={styles.blog__description}>
-            {blogList.map((blog) => (
+            {blogList.map(({ id, title }) => (
               <>
-                <div className={styles.blog__description__left}>{blog.id}</div>
-                <div className={styles.blog__description__mid}>
-                  {blog.title}
-                </div>
+                <div className={styles.blog__description__left}>{id}</div>
+                <div className={styles.blog__description__mid}>{title}</div>
                 <div className={styles.blog__description__right}>
-                  <Link to={`/ShowBlogDetails/${blog.id}`}>Open this blog</Link>
+                  <Link to={`/ShowBlogDetails/${id}`}>Open this blog</Link>
                 </div>
               </>
             ))}

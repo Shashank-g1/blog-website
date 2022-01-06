@@ -4,12 +4,9 @@ import styles from "./Loader.module.less";
 
 function Loader() {
   return (
-    <>
-      <div className={styles.loader}>
-        <Spinner animation="border" />
-      </div>
-      ;
-    </>
+    <div className={styles.loader}>
+      <Spinner animation="border" />
+    </div>
   );
 }
 

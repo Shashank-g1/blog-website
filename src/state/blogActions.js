@@ -11,7 +11,7 @@ export const displayingBlogList = (flag) => {
   return { type: FETCHING_BLOG_LIST, payload: flag };
 };
 
-export const fetchingBlogList = () => {
+export const fetchBlogList = () => {
   return async (dispatch) => {
     try {
       dispatch(displayingBlogList(true));

@@ -4,11 +4,11 @@ import styles from "./ShowBlogDetails.module.less";
 import Loader from "../../Common-Components/Loader/Loader";
 
 function ShowBlogDetails(props) {
-  const id = useParams();
-
-  const { id: blogId } = id;
+  const { id: blogId } = useParams();
 
   const { fetchBlogData, blogData, isFetchingBlogData } = props;
+
+  const { title, body } = blogData;
 
   useEffect(() => {
     fetchBlogData(blogId);
@@ -16,7 +16,7 @@ function ShowBlogDetails(props) {
 
   return (
     <>
-      {isFetchingBlogData === true ? (
+      {isFetchingBlogData ? (
         <Loader />
       ) : (
         <div className={styles.bodyBackground}>
@@ -25,11 +25,11 @@ function ShowBlogDetails(props) {
 
             <div className={styles.description}>
               <h5>
-                <b>Title :</b> {blogData.title}
+                <b>Title :</b> {title}
               </h5>
               <div className={styles.mainContent}>
                 <b> Blog: </b>
-                {blogData.body}
+                {body}
               </div>
             </div>
 
