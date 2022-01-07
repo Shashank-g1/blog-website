@@ -3,6 +3,7 @@ import {
   FETCHING_BLOG_LIST_SUCCESS,
   FETCHING_BLOG_DATA,
   FETCHING_BLOG_DATA_SUCCESS,
+  ADD_COMMENT,
 } from "./actionTypes";
 import { batch } from "react-redux";
 import axios from "axios";
@@ -53,4 +54,8 @@ export const fetchBlogData = (id) => {
       });
     }
   };
+};
+
+export const addingComments = (data) => {
+  return { type: ADD_COMMENT, payload: data };
 };

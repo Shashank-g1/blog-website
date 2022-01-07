@@ -1,12 +1,14 @@
 import { connect } from "react-redux";
 import ShowBlogDetails from "./ShowBlogDetails";
-import { fetchBlogData } from "../../state/blogActions";
+import { fetchBlogData, addingComments } from "../../state/blogActions";
 
 const mapStateToProps = (state) => {
   const {
-    blogReducer: { isFetchingBlogData, blogData },
+    blogReducer: { isFetchingBlogData, blogData, comments },
   } = state;
-  return { isFetchingBlogData, blogData };
+  return { isFetchingBlogData, blogData, comments };
 };
 
-export default connect(mapStateToProps, { fetchBlogData })(ShowBlogDetails);
+export default connect(mapStateToProps, { fetchBlogData, addingComments })(
+  ShowBlogDetails
+);
