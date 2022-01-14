@@ -2,34 +2,36 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import styles from "./ShowBlogDetails.module.less";
 import Loader from "../../Common-Components/Loader/Loader";
-import { useDispatch } from "react-redux";
+import NavBar from "../../Common-Components/NavBar";
+import Comment from "../../Common-Components/Comment";
+import Button from "../../Common-Components/Button";
 
 function ShowBlogDetails(props) {
   const { id: blogId } = useParams();
 
-  const {
-    fetchBlogData,
-    blogData,
-    isFetchingBlogData,
-    addingComments,
-    comments,
-  } = props;
+  const { fetchBlogData, blogData, isFetchingBlogData, addComment, comments } =
+    props;
 
   const { title, body } = blogData;
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
     fetchBlogData(blogId);
-  }, [blogId, fetchBlogData]);
+  }, [fetchBlogData, blogId]);
 
   const [comment, setComment] = useState("");
 
-  const addComment = () => {
-    dispatch(addingComments(comment));
+  const onChangeHandler = (e) => {
+    setComment(e.target.value);
   };
+
+  const postingComment = () => {
+    addComment(comment);
+    setComment("");
+  };
+
   return (
     <>
+      <NavBar />
       {isFetchingBlogData ? (
         <Loader />
       ) : (
@@ -51,14 +53,24 @@ function ShowBlogDetails(props) {
                 className="form-control status-box"
                 rows="3"
                 placeholder="Enter your comment here..."
-                onChange={(e) => setComment(e.target.value)}
+                onChange={onChangeHandler}
+                value={comment}
               />
             </form>
-            <button className="btn btn-primary" onClick={addComment}>
-              Post
-            </button>
-            <br />
-            {comments}
+            <Button
+              className="btn btn-primary"
+              text="Post"
+              onClick={postingComment}
+              styles={{ margin: " 1rem 0 0 29rem", width: "8rem" }}
+            />
+
+            {comments.map((element, index) => (
+              <>
+                <div className={styles.commentBox}>
+                  <Comment element={element} index={index} />
+                </div>
+              </>
+            ))}
           </div>
         </div>
       )}

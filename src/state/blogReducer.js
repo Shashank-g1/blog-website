@@ -5,7 +5,11 @@ import {
   FETCHING_BLOG_DATA,
   FETCHING_BLOG_DATA_SUCCESS,
   ADD_COMMENT,
+  DELETE_COMMENT,
+  UPDATE_COMMENT,
 } from "./actionTypes";
+
+import update from "react-addons-update";
 
 const initialState = {
   blogList: [],
@@ -27,6 +31,23 @@ export default (state = initialState, action) => {
       return { ...state, blogData: action.payload };
     case ADD_COMMENT:
       return { ...state, comments: [...state.comments, action.payload] };
+    case DELETE_COMMENT:
+      return {
+        ...state,
+        comments: [
+          ...state.comments.filter((comment) => comment !== action.payload),
+        ],
+      };
+    case UPDATE_COMMENT:
+      const { index, content } = action.payload;
+      return update(state, {
+        comments: {
+          [index]: {
+            $set: content,
+          },
+        },
+      });
+
     default:
       return state;
   }

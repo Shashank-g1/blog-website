@@ -4,6 +4,8 @@ import {
   FETCHING_BLOG_DATA,
   FETCHING_BLOG_DATA_SUCCESS,
   ADD_COMMENT,
+  DELETE_COMMENT,
+  UPDATE_COMMENT,
 } from "./actionTypes";
 import { batch } from "react-redux";
 import axios from "axios";
@@ -56,6 +58,14 @@ export const fetchBlogData = (id) => {
   };
 };
 
-export const addingComments = (data) => {
+export const addComment = (data) => {
   return { type: ADD_COMMENT, payload: data };
+};
+
+export const deleteComment = (data) => {
+  return { type: DELETE_COMMENT, payload: data };
+};
+
+export const updateComment = (index, content) => {
+  return { type: UPDATE_COMMENT, payload: { index, content } };
 };
